@@ -10,9 +10,9 @@ public class ContextScope implements Scope {
 
     private final ContextHolder contextHolder;
 
-	public ContextScope(ContextHolder holder) {
+    public ContextScope(ContextHolder holder) {
         super();
-		this.contextHolder = holder;
+        this.contextHolder = holder;
     }
 
     public <T> Provider<T> scope(Key<T> key, final Provider<T> creator) {
@@ -20,9 +20,9 @@ public class ContextScope implements Scope {
         return new Provider<T>() {
 
             public T get() {
-                Map<String, Object> context = contextHolder.get() ;
-                if(!context.containsKey(name)){
-                    context.put(name,creator.get());
+                Map<String, Object> context = contextHolder.get();
+                if (!context.containsKey(name)) {
+                    context.put(name, creator.get());
                 }
                 @SuppressWarnings("unchecked")
                 T t = (T) context.get(name);

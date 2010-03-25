@@ -4,5 +4,5 @@ import java.util.Map;
 
 public interface ContextHolder {
 
-	Map<String,Object> get();
+    Map<String, Object> get();
 }

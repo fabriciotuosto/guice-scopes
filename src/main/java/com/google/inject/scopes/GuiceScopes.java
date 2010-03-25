@@ -14,11 +14,12 @@ import java.util.WeakHashMap;
 class GuiceScopes {
 
     private static ThreadLocal<Map<String, Object>> locals =
-                               new ThreadLocal<Map<String, Object>>() {
-        protected Map<String, Object> initialValue() {
-            return new WeakHashMap<String, Object>();
-        }
-    };
+            new ThreadLocal<Map<String, Object>>() {
+
+                protected Map<String, Object> initialValue() {
+                    return new WeakHashMap<String, Object>();
+                }
+            };
 
     public static Map<String, Object> getThreadLocalContext() {
         return locals.get();

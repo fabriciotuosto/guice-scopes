@@ -10,36 +10,36 @@ import com.google.inject.scopes.ContextHolder;
 
 public class RequestContextHolder implements ContextHolder {
 
-	public Map<String, Object> get() {
-		HttpServletRequest request = GuiceFilter.getRequest();
-		return new RequestAttributesAsMap(request);
-	}
-	
-	@SuppressWarnings("serial")
-	class RequestAttributesAsMap extends HashMap<String, Object>{
+    public Map<String, Object> get() {
+        HttpServletRequest request = GuiceFilter.getRequest();
+        return new RequestAttributesAsMap(request);
+    }
 
-		private final HttpServletRequest request;
+    @SuppressWarnings("serial")
+    class RequestAttributesAsMap extends HashMap<String, Object> {
 
-		public RequestAttributesAsMap(HttpServletRequest request) {
-			this.request = request;
-			@SuppressWarnings("unchecked")
-			Enumeration<String> enumeration = request.getAttributeNames();
-			while(enumeration.hasMoreElements()){
-				String key = enumeration.nextElement();
-				super.put(key, request.getAttribute(key));
-			}
-		}
+        private final HttpServletRequest request;
 
-		@Override
-		public Object get(Object key) {
-			request.getAttribute(String.valueOf(key));
-			return super.get(key);
-		}
+        public RequestAttributesAsMap(HttpServletRequest request) {
+            this.request = request;
+            @SuppressWarnings("unchecked")
+            Enumeration<String> enumeration = request.getAttributeNames();
+            while (enumeration.hasMoreElements()) {
+                String key = enumeration.nextElement();
+                super.put(key, request.getAttribute(key));
+            }
+        }
 
-		@Override
-		public Object put(String key, Object value) {
-			request.setAttribute(key, value);
-			return super.put(key, value);
-		}	
-	}
+        @Override
+        public Object get(Object key) {
+            request.getAttribute(String.valueOf(key));
+            return super.get(key);
+        }
+
+        @Override
+        public Object put(String key, Object value) {
+            request.setAttribute(key, value);
+            return super.put(key, value);
+        }
+    }
 }

@@ -8,5 +8,4 @@ import com.google.inject.ScopeAnnotation;
 @ScopeAnnotation
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ThreadLocalScoped {
-
 }

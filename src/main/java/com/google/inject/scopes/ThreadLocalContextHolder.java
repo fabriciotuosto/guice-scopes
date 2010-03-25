@@ -13,19 +13,19 @@ import java.util.WeakHashMap;
  */
 class ThreadLocalContextHolder implements ContextHolder {
 
-	private ThreadLocal<Map<String, Object>> locals =
-		new ThreadLocal<Map<String, Object>>() {
+    private ThreadLocal<Map<String, Object>> locals =
+            new ThreadLocal<Map<String, Object>>() {
 
-		protected Map<String, Object> initialValue() {
-			return new WeakHashMap<String, Object>();
-		}
-	};
-	
-	public ThreadLocalContextHolder(){
-		super();	
-	}
-	
-	public Map<String, Object> get() {
-		return locals.get();
-	}
+                protected Map<String, Object> initialValue() {
+                    return new WeakHashMap<String, Object>();
+                }
+            };
+
+    public ThreadLocalContextHolder() {
+        super();
+    }
+
+    public Map<String, Object> get() {
+        return locals.get();
+    }
 }
