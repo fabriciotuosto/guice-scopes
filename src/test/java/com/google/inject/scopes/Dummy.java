@@ -1,8 +1,7 @@
 package com.google.inject.scopes;
 
-import com.google.inject.scopes.annotations.ThreadLocal;
 
-@ThreadLocal
+@ThreadLocalScoped
 public class Dummy {
 
 }

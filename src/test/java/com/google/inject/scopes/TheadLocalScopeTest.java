@@ -45,7 +45,6 @@ public class TheadLocalScopeTest {
 	private class Retriever implements Runnable {
 		private Dummy dummy;
 
-		@Override
 		public void run() {
 			dummy = retrieveIntance();
 		}
