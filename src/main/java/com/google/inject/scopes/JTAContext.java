@@ -4,12 +4,10 @@ package com.google.inject.scopes;
 import java.util.Map;
 
 /**
- * Este contexto esta basado en el tiempo de vida de la transaccion en curso.
- * TODO: De no existir transaccion, deberia crearla?
  * 
  * @author sebasjm at computer dot org
  */
-public class JTAContext implements ContextHolder{
+class JTAContext implements ContextHolder{
 
 
 

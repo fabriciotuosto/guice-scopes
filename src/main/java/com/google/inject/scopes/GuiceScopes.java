@@ -15,7 +15,6 @@ class GuiceScopes {
 
     private static ThreadLocal<Map<String, Object>> locals =
                                new ThreadLocal<Map<String, Object>>() {
-        @Override
         protected Map<String, Object> initialValue() {
             return new WeakHashMap<String, Object>();
         }
