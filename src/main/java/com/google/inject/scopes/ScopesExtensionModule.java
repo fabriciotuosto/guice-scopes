@@ -5,9 +5,8 @@ import com.google.inject.scopes.annotations.ThreadLocal;
 
 public class ScopesExtensionModule extends AbstractModule {
 
-	@Override
-	protected void configure() {
-		bindScope(ThreadLocal.class, ThreadLocalScope.THREAD_LOCAL);
-	}
-
+    @Override
+    protected void configure() {
+        bindScope(ThreadLocal.class, ThreadLocalScope.THREAD_LOCAL);
+    }
 }
