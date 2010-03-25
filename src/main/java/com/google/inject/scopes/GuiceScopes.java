@@ -13,14 +13,15 @@ import java.util.WeakHashMap;
  */
 class GuiceScopes {
 
-    private static ThreadLocal<Map<String, Object>> locals = new ThreadLocal<Map<String, Object>>();
+    private static ThreadLocal<Map<String, Object>> locals =
+                               new ThreadLocal<Map<String, Object>>() {
+        @Override
+        protected Map<String, Object> initialValue() {
+            return new WeakHashMap<String, Object>();
+        }
+    };
 
     public static Map<String, Object> getThreadLocalContext() {
-        Map<String, Object> context = locals.get();
-        if (context == null) {
-            context = new WeakHashMap<String, Object>();
-            locals.set(context);
-        }
-        return context;
+        return locals.get();
     }
 }
