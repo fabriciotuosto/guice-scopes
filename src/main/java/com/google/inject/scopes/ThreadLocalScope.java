@@ -25,17 +25,10 @@ public class ThreadLocalScope implements Scope {
             @Override
             public T get() {
                 Map<String, Object> context = GuiceScopes.getThreadLocalContext();
-                Object obj = context.get(name);
-                if (NullObject.INSTANCE == obj) {
-                    return null;
+                if(!context.containsKey(name)){
+                    context.put(name,creator.get());
                 }
-                @SuppressWarnings("unchecked")
-                T t = (T) obj;
-                if (t == null) {
-                    t = creator.get();
-                    context.put(name, (t != null) ? t : NullObject.INSTANCE);
-                }
-                return t;
+                return (T) context.get(name);
             }
         };
     }
