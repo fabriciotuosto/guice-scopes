@@ -5,10 +5,10 @@
 package com.google.inject.scopes;
 
 import java.util.Map;
-import java.util.WeakHashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
- *
+ * Context for thread local scope
  * @author Fabricio Tuosto
  */
 class ThreadLocalContextHolder implements ContextHolder {
@@ -17,7 +17,7 @@ class ThreadLocalContextHolder implements ContextHolder {
             new ThreadLocal<Map<String, Object>>() {
 
                 protected Map<String, Object> initialValue() {
-                    return new WeakHashMap<String, Object>();
+                    return new ConcurrentHashMap<String, Object>();
                 }
             };
 

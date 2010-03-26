@@ -1,15 +1,19 @@
 package com.google.inject.servlet;
 
 import com.google.inject.AbstractModule;
-import com.google.inject.scopes.ContextScope;
+import com.google.inject.scopes.Scopes;
 
+/**
+ * extension for javax.servlet scope binding allowing to be moddiffied
+ * for testing purposes
+ * 
+ * @author Fabricio Tuosto
+ */
 public class TestableServletModule extends AbstractModule {
 
     protected void configure() {
-        SesstionContextHolder sessionContext = new SesstionContextHolder();
-        bindScope(SessionScoped.class, new ContextScope(sessionContext));
+        bindScope(SessionScoped.class, Scopes.SESSION);
 
-        RequestContextHolder requestContext = new RequestContextHolder();
-        bindScope(RequestScoped.class, new ContextScope(requestContext));
+        bindScope(RequestScoped.class, Scopes.REQUEST);
     }
 }

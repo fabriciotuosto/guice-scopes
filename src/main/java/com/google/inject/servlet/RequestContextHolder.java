@@ -10,6 +10,11 @@ import com.google.inject.scopes.ContextHolder;
 
 public class RequestContextHolder implements ContextHolder {
 
+        /**
+     *
+     * @return an request.attribute view as a map that is valid
+     * for the current request
+     */
     public Map<String, Object> get() {
         HttpServletRequest request = GuiceFilter.getRequest();
         return new RequestAttributesAsMap(request);

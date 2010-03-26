@@ -10,11 +10,20 @@ import com.google.inject.scopes.ContextHolder;
 
 public class SesstionContextHolder implements ContextHolder {
 
+    /**
+     *
+     * @return an session.attribute view as a map that is valid
+     * for the current session
+     */
     public Map<String, Object> get() {
         HttpSession session = GuiceFilter.getRequest().getSession();
         return new SessionAttributesAsMap(session);
     }
 
+    /**
+     * Class that view the Attributes of a HttpSession as a Map
+     * to homogenize an API in ContextHolder
+     */
     @SuppressWarnings("serial")
     class SessionAttributesAsMap extends HashMap<String, Object> {
 
